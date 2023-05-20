@@ -1,6 +1,7 @@
 package com.moises.rest.api.exceptionHandler;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -15,7 +16,7 @@ import lombok.Getter;
 class ApiErrorHandler {
 
 	private Integer status;
-	private LocalDateTime dateHourDate;
+	private OffsetDateTime dateHourDate;
 	private String message;
 	private List<Field> fields;
 	

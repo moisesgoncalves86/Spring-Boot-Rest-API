@@ -1,6 +1,7 @@
 package com.moises.rest.api.exceptionHandler;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 		
 		ApiErrorHandler errorHandler = new ApiErrorHandler();
 		errorHandler.setStatus(status.value());
-		errorHandler.setDateHourDate(LocalDateTime.now());
+		errorHandler.setDateHourDate(OffsetDateTime.now());
 		errorHandler.setMessage("One or more fields are invalid. Fill it out correctly and try again.");
 		errorHandler.setFields(fields);
 		
@@ -56,7 +57,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 		
 		ApiErrorHandler errorHandler = new ApiErrorHandler();
 		errorHandler.setStatus(status.value());
-		errorHandler.setDateHourDate(LocalDateTime.now());
+		errorHandler.setDateHourDate(OffsetDateTime.now());
 		errorHandler.setMessage(ex.getMessage());
 		
 		return handleExceptionInternal(ex, errorHandler, new HttpHeaders(), status, request);
