@@ -24,46 +24,46 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/clients")
-public class ClientController {
+@RequestMapping("/customer")
+public class CustomerController {
 	
-	private CustomerRepository clientRepository;
-	private CrudCustomerService clientService;
+	private CustomerRepository customerRepository;
+	private CrudCustomerService customerService;
 	
 	@GetMapping
-	public List<Customer> clientList() {
-		return clientRepository.findAll();
+	public List<Customer> customerList() {
+		return customerRepository.findAll();
 	}
 	
-	@GetMapping("/{clientId}")
-	public ResponseEntity<Customer> getClient(@PathVariable Long clientId) {
-		return clientRepository.findById(clientId)
+	@GetMapping("/{customerId}")
+	public ResponseEntity<Customer> getCustomer(@PathVariable Long customerId) {
+		return customerRepository.findById(customerId)
 				.map(ResponseEntity::ok)
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Customer addClient(@Valid @RequestBody Customer client) {
-		return clientService.save(client);
+	public Customer addCustomer(@Valid @RequestBody Customer customer) {
+		return customerService.save(customer);
 	}
 	
-	@PutMapping("/{clientId}")
-	public ResponseEntity<Customer> update(@Valid @PathVariable Long clientId, @RequestBody Customer client) {
-		if(!clientRepository.existsById(clientId)) {
+	@PutMapping("/{customerId}")
+	public ResponseEntity<Customer> update(@Valid @PathVariable Long customerId, @RequestBody Customer customer) {
+		if(!customerRepository.existsById(customerId)) {
 			return ResponseEntity.notFound().build(); 
 		}
-		client.setId(clientId);
-		client = clientService.save(client);
-		return ResponseEntity.ok(client);
+		customer.setId(customerId);
+		customer = customerService.save(customer);
+		return ResponseEntity.ok(customer);
 	}
 	
-	@DeleteMapping("/{clientId}")
-	public ResponseEntity<Void> delete(@PathVariable Long clientId) {
-		if(!clientRepository.existsById(clientId)) {
+	@DeleteMapping("/{customerId}")
+	public ResponseEntity<Void> delete(@PathVariable Long customerId) {
+		if(!customerRepository.existsById(customerId)) {
 			return ResponseEntity.notFound().build();
 		}
-		clientService.delete(clientId);
+		customerService.delete(customerId);
 		return ResponseEntity.noContent().build();
 	}
 

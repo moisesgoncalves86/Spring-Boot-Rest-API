@@ -1,6 +1,5 @@
 package com.moises.rest.api.exceptionHandler;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +50,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 	}
 	
 	@ExceptionHandler(BusinessException.class)
-	public ResponseEntity<Object> businessHandle(BusinessException ex, WebRequest request) {
+	public ResponseEntity<Object> businessExceptionsHandler(BusinessException ex, WebRequest request) {
 		
 		HttpStatus status = HttpStatus.BAD_REQUEST;
 		

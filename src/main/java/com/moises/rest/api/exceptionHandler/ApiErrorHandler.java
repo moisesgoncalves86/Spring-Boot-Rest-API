@@ -1,6 +1,5 @@
 package com.moises.rest.api.exceptionHandler;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -13,7 +12,7 @@ import lombok.Getter;
 
 @JsonInclude(Include.NON_NULL)
 @Data
-class ApiErrorHandler {
+public class ApiErrorHandler {
 
 	private Integer status;
 	private OffsetDateTime dateHourDate;
